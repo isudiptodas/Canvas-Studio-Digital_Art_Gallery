@@ -1,4 +1,4 @@
-import arcjet, { shield, detectBot, tokenBucket, validateEmail } from "@arcjet/node";
+import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
 
 const arcjetProtect = arcjet({
     key: process.env.ARCJET_KEY,
@@ -9,6 +9,7 @@ const arcjetProtect = arcjet({
             allow: [
                 "CATEGORY:SEARCH_ENGINE",
                 "CATEGORY:PREVIEW",
+                
             ]
         }),
         tokenBucket({
@@ -17,15 +18,5 @@ const arcjetProtect = arcjet({
             interval: 10,
             capacity: 5
         }),
-    ]
-});
-
-const arcValidateEmail = arcjet({
-    key: process.env.ARCJET_KEY,
-    rules: [
-        validateEmail({
-            mode: "LIVE",
-            deny: ["DISPOSABLE", "INVALID", "NO_MX_RECORDS"]
-        })
     ]
 });
