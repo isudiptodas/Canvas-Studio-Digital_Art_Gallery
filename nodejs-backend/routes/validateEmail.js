@@ -8,13 +8,7 @@ const router = express.Router();
 
 router.post('/api/validate-email', async (req, res) => {
     const decision = await arcjetProtect.protect(req);
-    if(decision.isDenied()){
-        return res.status(403).json({
-            message: `Forbidden`
-        });
-    }
-
-    if(decision.results.some(isSpoofedBot)){
+    if(decision.isDenied() || decision.results.some(isSpoofedBot)){
         return res.status(403).json({
             message: `Forbidden`
         });
@@ -35,3 +29,4 @@ router.post('/api/validate-email', async (req, res) => {
 });
 
 export default router;
+
