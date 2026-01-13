@@ -1,7 +1,6 @@
-<h1>In progress ...</h1>
-<br/>
 
-<h1>Canvas Studio</h1>
+<h1>Canvas Studio </h1>
+
 <h3>Features :</h3>
 
 <ul>
